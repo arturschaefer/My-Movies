@@ -39,26 +39,22 @@
                 android:id="@+id/tvItemShowName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:paddingBottom="8dp"
-                android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="The Mandalorian" />
+                tools:text="The Mandalorian"
+                style="@style/TitleText" />
 
             <View
                 android:id="@+id/vItemNameDivider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"
+                android:backgroundTint="@android:color/white"
                 app:layout_constraintTop_toBottomOf="@+id/tvItemShowName"
-                tools:layout_editor_absoluteX="0dp" />
+                tools:layout_editor_absoluteX="0dp"
+                tools:targetApi="lollipop" />
 
             <ImageButton
                 android:id="@+id/ibItemFavorite"
@@ -76,6 +72,7 @@
 
             <TextView
                 android:id="@+id/tvItemRate"
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:drawableStartCompat="@drawable/ic_dashboard_black_24dp"

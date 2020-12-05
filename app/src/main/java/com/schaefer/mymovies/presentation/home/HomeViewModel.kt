@@ -16,7 +16,8 @@ class HomeViewModel @ViewModelInject constructor(private val getShowsUseCase: Ge
     private val mutableListShow = MutableLiveData<ListShow>()
     val listShow: LiveData<ListShow> = mutableListShow
 
-    fun getShows() {
+    fun getShows(page: Int = 1) {
+        //TODO get the correct page
         getShowsUseCase(1)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -31,11 +32,11 @@ class HomeViewModel @ViewModelInject constructor(private val getShowsUseCase: Ge
     }
 
     private fun hideLoading() {
-        setState(HomeViewState(false))
+        setState(HomeViewState().isLoadingEnabled(false))
     }
 
     private fun showLoading() {
-        setState(HomeViewState(true))
+        setState(HomeViewState().isLoadingEnabled(true))
     }
 
     private fun getShowsSuccess(listShow: ListShow) {

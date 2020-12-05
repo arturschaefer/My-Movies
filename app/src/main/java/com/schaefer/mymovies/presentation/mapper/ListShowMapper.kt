@@ -1,7 +1,6 @@
 package com.schaefer.mymovies.presentation.mapper
 
 import com.schaefer.mymovies.core.Mapper
-import com.schaefer.mymovies.data.model.ListShowData
 import com.schaefer.mymovies.domain.model.ListShowDomain
 import com.schaefer.mymovies.presentation.model.ListShow
 

@@ -1,8 +1,7 @@
 package com.schaefer.mymovies.presentation.mapper
 
 import com.schaefer.mymovies.core.Mapper
-import com.schaefer.mymovies.data.model.ShowData
-import com.schaefer.mymovies.domain.model.*
+import com.schaefer.mymovies.domain.model.ShowDomain
 import com.schaefer.mymovies.presentation.model.Show
 
 class ShowMapper(
@@ -27,16 +26,16 @@ class ShowMapper(
             runtime = source.runtime,
             premiered = source.premiered,
             officialSite = source.officialSite,
-            schedule = scheduleMapper.map(source.scheduleDomain),
-            rating = ratingMapper.map(source.ratingDomain),
+            schedule = source.scheduleDomain?.let { scheduleMapper.map(it) },
+            rating = source.ratingDomain?.let { ratingMapper.map(it) },
             weight = source.weight,
-            network = networkMapper.map(source.networkDomain),
-            webChannel = webChannelMapper.map(source.webChannelDomain),
-            externals = externalsMapper.map(source.externalsDomain),
-            image = imageMapper.map(source.imageDomain),
+            network = source.networkDomain?.let { networkMapper.map(it) },
+            webChannel = source.webChannelDomain?.let { webChannelMapper.map(source.webChannelDomain) },
+            externals = source.externalsDomain?.let { externalsMapper.map(it) },
+            image = source.imageDomain?.let { imageMapper.map(it) },
             summary = source.summary,
             updated = source.updated,
-            links = linksMapper.map(source.linksDomain)
+            links = source.linksDomain?.let { linksMapper.map(it) }
         )
     }
 

@@ -11,14 +11,14 @@ data class ShowDomain (
 	val runtime : Int,
 	val premiered : String,
 	val officialSite : String,
-	val scheduleDomain : ScheduleDomain,
-	val ratingDomain : RatingDomain,
+	val scheduleDomain : ScheduleDomain?,
+	val ratingDomain : RatingDomain?,
 	val weight : Int,
-	val networkDomain : NetworkDomain,
-	val webChannelDomain : WebChannelDomain,
-	val externalsDomain : ExternalsDomain,
-	val imageDomain : ImageDomain,
+	val networkDomain : NetworkDomain?,
+	val webChannelDomain : WebChannelDomain?,
+	val externalsDomain : ExternalsDomain?,
+	val imageDomain : ImageDomain?,
 	val summary : String,
 	val updated : Int,
-	val linksDomain : LinksDomain
+	val linksDomain : LinksDomain?
 )

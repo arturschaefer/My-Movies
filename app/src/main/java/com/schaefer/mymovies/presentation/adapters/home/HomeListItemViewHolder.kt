@@ -3,9 +3,9 @@ package com.schaefer.mymovies.presentation.adapters.home
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_card_image.*
 import com.schaefer.mymovies.presentation.model.Show
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_card_image.*
 
 class HomeListItemViewHolder(
     itemView: View
@@ -13,9 +13,9 @@ class HomeListItemViewHolder(
 
     fun bind(show: Show) {
         tvItemShowName.text = show.name
-        tvItemRate.text = show.rating.average
+        tvItemRate.text = show.rating?.average.toString()
 
-        Glide.with(itemView).load(show.image.original).centerCrop().into(ivItemPoster)
+        Glide.with(itemView).load(show.image?.original).centerCrop().into(ivItemPoster)
     }
 
     override val containerView: View

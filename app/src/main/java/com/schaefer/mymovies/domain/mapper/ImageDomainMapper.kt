@@ -1,14 +1,14 @@
 package com.schaefer.mymovies.domain.mapper
 
 import com.schaefer.mymovies.core.Mapper
-import com.schaefer.mymovies.data.model.ImageData
+import com.schaefer.mymovies.data.model.Image
 import com.schaefer.mymovies.domain.model.ImageDomain
 
-class ImageDomainMapper : Mapper<ImageData, ImageDomain> {
-    override fun map(source: ImageData): ImageDomain {
+class ImageDomainMapper : Mapper<Image, ImageDomain> {
+    override fun map(source: Image): ImageDomain {
         return ImageDomain(
-            medium = source.medium,
-            original = source.original
+            medium = source.medium.orEmpty(),
+            original = source.original.orEmpty()
         )
     }
 }

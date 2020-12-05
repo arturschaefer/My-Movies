@@ -1,5 +1,7 @@
 package com.schaefer.mymovies.di
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.schaefer.mymovies.BuildConfig
 import com.schaefer.mymovies.data.api.TvMazeAPI
 import com.schaefer.mymovies.data.api.TvMazeServiceAPI
@@ -20,10 +22,14 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 class NetworkModule {
 
+    @Provides
+    @Singleton
+    fun providesGson(): Gson = GsonBuilder().create()
+
     @Singleton
     @Provides
-    fun providerRetrofit(okHttpClient: OkHttpClient): Retrofit =
-        TvMazeServiceAPI(okHttpClient).getService()
+    fun providerRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit =
+        TvMazeServiceAPI(okHttpClient).getService(gson)
 
     @Provides
     fun providesOkHttpClient(interceptor: Interceptor): OkHttpClient =

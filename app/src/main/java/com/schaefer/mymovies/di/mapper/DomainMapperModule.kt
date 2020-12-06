@@ -1,11 +1,10 @@
-package com.schaefer.mymovies.di
+package com.schaefer.mymovies.di.mapper
 
 import com.schaefer.mymovies.domain.mapper.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
@@ -68,4 +67,8 @@ class DomainMapperModule {
     @Provides
     fun providesListShowDataMapper(domainMapper: ShowDomainMapper): ListDomainShowMapper =
         ListDomainShowMapper(domainMapper)
+
+    @Provides
+    fun providesSearchDataMapper(domainMapper: ShowDomainMapper): SearchResponseItemMapper =
+        SearchResponseItemMapper(domainMapper)
 }

@@ -3,7 +3,9 @@ package com.schaefer.mymovies.di
 import com.schaefer.mymovies.data.api.TvMazeAPI
 import com.schaefer.mymovies.data.repository.ShowsRepositoryImpl
 import com.schaefer.mymovies.domain.mapper.ListDomainShowMapper
+import com.schaefer.mymovies.domain.mapper.SearchResponseItemMapper
 import com.schaefer.mymovies.domain.repository.ShowsRepository
+import com.schaefer.mymovies.domain.usecase.GetSearchShowsUseCase
 import com.schaefer.mymovies.domain.usecase.GetShowsUseCase
 import com.schaefer.mymovies.presentation.mapper.ListShowMapper
 import dagger.Module
@@ -19,10 +21,15 @@ class RepositoryModule {
     @Provides
     fun providesShowsRepository(
         service: TvMazeAPI,
-        mapperDomain: ListDomainShowMapper
-    ): ShowsRepository = ShowsRepositoryImpl(service, mapperDomain)
+        mapperDomain: ListDomainShowMapper,
+        mapperSearch: SearchResponseItemMapper
+    ): ShowsRepository = ShowsRepositoryImpl(service, mapperDomain, mapperSearch)
 
     @Provides
     fun providesGetShowUseCase(repository: ShowsRepository, mapper: ListShowMapper) =
         GetShowsUseCase(repository, mapper)
+
+    @Provides
+    fun providesGetSearchShowsUseCase(repository: ShowsRepository, mapper: ListShowMapper) =
+        GetSearchShowsUseCase(repository, mapper)
 }

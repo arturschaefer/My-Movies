@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.di
+package com.schaefer.mymovies.di.mapper
 
 import com.schaefer.mymovies.presentation.mapper.*
 import dagger.Module

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/showDetailsFragment"
-        android:name="com.schaefer.mymovies.presentation.showdetails.ShowDetailsFragment"
+        android:name="com.schaefer.mymovies.presentation.details.show.ShowDetailsFragment"
         android:label="ShowDetailsFragment"
         tools:layout="@layout/fragment_show_details">
         <argument

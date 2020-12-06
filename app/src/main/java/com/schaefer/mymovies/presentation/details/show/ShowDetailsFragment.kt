@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.showdetails
+package com.schaefer.mymovies.presentation.details.show
 
 import android.os.Bundle
 import android.view.View
@@ -12,17 +12,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.schaefer.mymovies.R
 import com.schaefer.mymovies.presentation.adapters.showdetails.ExpandableItemAnimator
 import com.schaefer.mymovies.presentation.adapters.showdetails.ItemsExpandableAdapter
+import com.schaefer.mymovies.presentation.adapters.showdetails.OnItemClickListener
+import com.schaefer.mymovies.presentation.details.episode.EpisodeDetailsFragment
 import com.schaefer.mymovies.presentation.model.Episode
 import com.schaefer.mymovies.presentation.model.EpisodeGroup
 import com.schaefer.mymovies.presentation.model.Show
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.content_details.*
-import kotlinx.android.synthetic.main.content_details.view.*
+import kotlinx.android.synthetic.main.content_show_details.*
 import kotlinx.android.synthetic.main.fragment_show_details.*
 import timber.log.Timber
 
 @AndroidEntryPoint
-class ShowDetailsFragment : Fragment(R.layout.fragment_show_details) {
+class ShowDetailsFragment : Fragment(R.layout.fragment_show_details), OnItemClickListener {
     private val viewModel: ShowDetailsViewModel by viewModels()
 
     val args by navArgs<ShowDetailsFragmentArgs>()
@@ -35,7 +36,6 @@ class ShowDetailsFragment : Fragment(R.layout.fragment_show_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Timber.d(show.toString())
         setupView()
         setupObservers()
     }
@@ -52,7 +52,8 @@ class ShowDetailsFragment : Fragment(R.layout.fragment_show_details) {
                 EpisodeGroup(
                     "Season ${it.key}",
                     it.value
-                )
+                ),
+                this
             )
         }
 
@@ -77,5 +78,11 @@ class ShowDetailsFragment : Fragment(R.layout.fragment_show_details) {
             tvSummaryDescription.text = show.summary.parseAsHtml()
         }
         viewModel.getEpisodeList(show.id)
+    }
+
+    override fun onItemClick(show: Episode) {
+        Timber.d(show.toString())
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.add(R.id.nav_host_fragment, EpisodeDetailsFragment(), "EpisodeDetails")
     }
 }

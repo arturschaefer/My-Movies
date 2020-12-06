@@ -4,9 +4,17 @@
     <string name="title_favorites">Favorites</string>
     <string name="title_people">People</string>
     <string name="menu_search">Search</string>
+
+    <!--    Show details-->
     <string name="details_title_summary">Summary</string>
     <string name="details_title_genres">Genres</string>
     <string name="details_title_time">Time</string>
     <string name="details_title_days">Days</string>
     <string name="details_title_schedule">Schedule</string>
+
+    <!--    Episode details-->
+    <string name="details_episode_title_information">Information</string>
+    <string name="details_episode_title_summary">Summary</string>
+    <string name="details_episode_title_season">Season</string>
+    <string name="details_episode_title_number">Number</string>
 </resources>

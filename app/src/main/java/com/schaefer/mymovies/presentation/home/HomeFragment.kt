@@ -13,8 +13,8 @@ import androidx.fragment.app.viewModels
 import com.schaefer.mymovies.R
 import com.schaefer.mymovies.presentation.adapters.home.HomeListAdapter
 import com.schaefer.mymovies.presentation.adapters.home.OnItemClickListener
+import com.schaefer.mymovies.presentation.details.DetailsActivity
 import com.schaefer.mymovies.presentation.model.Show
-import com.schaefer.mymovies.presentation.showdetails.DetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 

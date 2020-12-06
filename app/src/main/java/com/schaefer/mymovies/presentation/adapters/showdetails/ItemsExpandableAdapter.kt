@@ -19,7 +19,10 @@ private const val IC_EXPANDED_ROTATION_DEG = 0F
 private const val IC_COLLAPSED_ROTATION_DEG = 180F
 
 //Reference: https://medium.com/codeshake/create-an-expandable-recyclerview-with-the-mergeadapter-254fd671fa5b
-class ItemsExpandableAdapter(private val episodesGroup: EpisodeGroup) :
+class ItemsExpandableAdapter(
+    private val episodesGroup: EpisodeGroup,
+    val onItemClickListener: OnItemClickListener
+) :
     RecyclerView.Adapter<ItemsExpandableAdapter.ViewHolder>() {
 
     var isExpanded: Boolean by Delegates.observable(false) { _: KProperty<*>, _: Boolean, newExpandedValue: Boolean ->
@@ -67,7 +70,10 @@ class ItemsExpandableAdapter(private val episodesGroup: EpisodeGroup) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         when (holder) {
-            is ViewHolder.ItemVH -> holder.bind(episodesGroup.listEpisodes[position - 1])
+            is ViewHolder.ItemVH -> holder.bind(
+                episodesGroup.listEpisodes[position - 1],
+                onItemClickListener
+            )
             is ViewHolder.HeaderVH -> {
                 holder.bind(episodesGroup.title, isExpanded, onHeaderClickListener)
             }
@@ -78,9 +84,10 @@ class ItemsExpandableAdapter(private val episodesGroup: EpisodeGroup) :
 
         class ItemVH(itemView: View) : ViewHolder(itemView) {
 
-            fun bind(content: Episode) {
+            fun bind(content: Episode, onItemClickListener: OnItemClickListener) {
                 itemView.apply {
                     tvItemContent.text = content.name.orEmpty()
+                    setOnClickListener { onItemClickListener.onItemClick(content) }
                 }
             }
         }

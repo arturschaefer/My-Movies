@@ -5,5 +5,5 @@
 
     <include
         android:id="@+id/includeShowDetails"
-        layout="@layout/content_show_details" />
+        layout="@layout/content_episode_details" />
 </LinearLayout>

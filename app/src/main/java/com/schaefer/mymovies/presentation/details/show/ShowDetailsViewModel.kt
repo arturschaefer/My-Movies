@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.showdetails
+package com.schaefer.mymovies.presentation.details.show
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -12,7 +12,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
 class ShowDetailsViewModel @ViewModelInject constructor(val getEpisodeListUseCase: GetEpisodeListUseCase) :
-    ViewModel<ShowDetailsViewState, ShowDetailAction>(ShowDetailsViewState(true)) {
+    ViewModel<ShowDetailsViewState, ShowDetailsAction>(ShowDetailsViewState(true)) {
 
     private val mutableHashMap = MutableLiveData<Map<Int?, List<Episode>>>()
     val episodes: LiveData<Map<Int?, List<Episode>>> = mutableHashMap

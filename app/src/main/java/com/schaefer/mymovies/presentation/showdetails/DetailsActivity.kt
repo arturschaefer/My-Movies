@@ -58,6 +58,8 @@ class DetailsActivity : AppCompatActivity(R.layout.activity_details) {
 
     override fun onSupportNavigateUp(): Boolean {
         if (!(navController.navigateUp() || super.onSupportNavigateUp())) {
+            finish()
+        } else {
             onBackPressed()
         }
         return true

@@ -71,4 +71,15 @@ class DomainMapperModule {
     @Provides
     fun providesSearchDataMapper(domainMapper: ShowDomainMapper): SearchResponseItemMapper =
         SearchResponseItemMapper(domainMapper)
+
+    @Provides
+    fun providesEpisodeItemMapper(
+        mapperLinksDomainMapper: LinksDomainMapper,
+        imageDomainMapper: ImageDomainMapper
+    ): EpisodeDomainMapper =
+        EpisodeDomainMapper(mapperLinksDomainMapper, imageDomainMapper)
+
+    @Provides
+    fun providesListEpisodeMapper(mapper: EpisodeDomainMapper): ListEpisodeDomainMapper =
+        ListEpisodeDomainMapper(mapper)
 }

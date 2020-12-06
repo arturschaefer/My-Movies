@@ -70,4 +70,15 @@ class PresentationMapperModule {
     @Provides
     fun providesListShowDataMapper(mapper: ShowMapper): ListShowMapper =
         ListShowMapper(mapper)
+
+    @Provides
+    fun providesEpisodeItemMapper(
+        mapperLinksMapper: LinksMapper,
+        imageMapper: ImageMapper
+    ): EpisodeMapper =
+        EpisodeMapper(mapperLinksMapper, imageMapper)
+
+    @Provides
+    fun providesListEpisodeMapper(mapper: EpisodeMapper): ListEpisodeMapper =
+        ListEpisodeMapper(mapper)
 }

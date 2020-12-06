@@ -84,5 +84,6 @@ class ShowDetailsFragment : Fragment(R.layout.fragment_show_details), OnItemClic
         Timber.d(show.toString())
         activity?.supportFragmentManager?.beginTransaction()
             ?.add(R.id.nav_host_fragment, EpisodeDetailsFragment(), "EpisodeDetails")
+            ?.addToBackStack("EpisodeDetails")?.commit()
     }
 }

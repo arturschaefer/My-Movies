@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/details_navigation"
+    app:startDestination="@id/showDetailsFragment">
+
+    <fragment
+        android:id="@+id/showDetailsFragment"
+        android:name="com.schaefer.mymovies.presentation.showdetails.ShowDetailsFragment"
+        android:label="ShowDetailsFragment"
+        tools:layout="@layout/fragment_show_details">
+        <argument
+            android:name="show"
+            app:argType="com.schaefer.mymovies.presentation.model.Show"
+            app:nullable="false" />
+    </fragment>
+</navigation>

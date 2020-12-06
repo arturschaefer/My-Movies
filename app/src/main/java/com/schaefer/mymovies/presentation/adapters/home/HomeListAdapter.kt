@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.schaefer.mymovies.R
 import com.schaefer.mymovies.presentation.model.ListShow
 
-class HomeListAdapter : RecyclerView.Adapter<HomeListItemViewHolder>() {
+class HomeListAdapter(val itemClickListener: OnItemClickListener) :
+    RecyclerView.Adapter<HomeListItemViewHolder>() {
+
     var shows = ListShow(emptyList())
         set(value) {
             val result = DiffUtil.calculateDiff(
@@ -28,7 +30,7 @@ class HomeListAdapter : RecyclerView.Adapter<HomeListItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: HomeListItemViewHolder, position: Int) {
-        holder.bind(shows.listShow[position])
+        holder.bind(shows.listShow[position], itemClickListener)
     }
 
     override fun getItemCount(): Int = shows.size()

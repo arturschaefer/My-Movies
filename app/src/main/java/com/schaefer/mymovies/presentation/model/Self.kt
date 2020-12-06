@@ -1,3 +1,7 @@
 package com.schaefer.mymovies.presentation.model
 
-data class Self(val href: String)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Self(val href: String): Parcelable

@@ -1,5 +1,9 @@
 package com.schaefer.mymovies.presentation.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Show (
 	val id : Int,
 	val url : String,
@@ -21,4 +25,4 @@ data class Show (
 	val summary : String,
 	val updated : Int,
 	val links : Links?
-)
+): Parcelable

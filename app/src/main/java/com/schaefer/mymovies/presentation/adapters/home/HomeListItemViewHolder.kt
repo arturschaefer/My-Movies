@@ -11,11 +11,13 @@ class HomeListItemViewHolder(
     itemView: View
 ) : RecyclerView.ViewHolder(itemView), LayoutContainer {
 
-    fun bind(show: Show) {
+    fun bind(show: Show, itemClickListener: OnItemClickListener) {
         tvItemShowName.text = show.name
         tvItemRate.text = show.rating?.average.toString()
 
         Glide.with(itemView).load(show.image?.original).centerCrop().into(ivItemPoster)
+
+        itemView.setOnClickListener { itemClickListener.onItemClick(show) }
     }
 
     override val containerView: View

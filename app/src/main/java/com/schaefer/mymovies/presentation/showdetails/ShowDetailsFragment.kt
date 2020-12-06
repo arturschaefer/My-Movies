@@ -6,16 +6,25 @@ import androidx.core.text.parseAsHtml
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.schaefer.mymovies.R
+import com.schaefer.mymovies.presentation.adapters.showdetails.ExpandableItemAnimator
+import com.schaefer.mymovies.presentation.adapters.showdetails.ItemsExpandableAdapter
+import com.schaefer.mymovies.presentation.model.Episode
+import com.schaefer.mymovies.presentation.model.EpisodeGroup
 import com.schaefer.mymovies.presentation.model.Show
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.content_details.*
 import kotlinx.android.synthetic.main.content_details.view.*
 import kotlinx.android.synthetic.main.fragment_show_details.*
 import timber.log.Timber
 
 @AndroidEntryPoint
 class ShowDetailsFragment : Fragment(R.layout.fragment_show_details) {
-    val viewModel: ShowDetailsViewModel by viewModels()
+    private val viewModel: ShowDetailsViewModel by viewModels()
+
     val args by navArgs<ShowDetailsFragmentArgs>()
 
     private val show: Show by lazy {
@@ -28,6 +37,36 @@ class ShowDetailsFragment : Fragment(R.layout.fragment_show_details) {
         super.onViewCreated(view, savedInstanceState)
         Timber.d(show.toString())
         setupView()
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewModel.episodes.observe(viewLifecycleOwner, { mapGroupBySeason ->
+            setupConcatAdapter(mapGroupBySeason)
+        })
+    }
+
+    private fun setupConcatAdapter(mapGroupBySeason: Map<Int?, List<Episode>>) {
+        val expandableAdapter = mapGroupBySeason.map {
+            ItemsExpandableAdapter(
+                EpisodeGroup(
+                    "Season ${it.key}",
+                    it.value
+                )
+            )
+        }
+
+        val concatAdapterConfig = ConcatAdapter.Config.Builder()
+            .setIsolateViewTypes(false)
+            .build()
+        val concatAdapter = ConcatAdapter(concatAdapterConfig, expandableAdapter)
+        with(rvSeasons) {
+            layoutManager = LinearLayoutManager(context).apply {
+                addItemDecoration(DividerItemDecoration(context, this.orientation))
+            }
+            itemAnimator = ExpandableItemAnimator()
+            adapter = concatAdapter
+        }
     }
 
     private fun setupView() {

@@ -1,14 +1,17 @@
 package com.schaefer.mymovies.presentation.details
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.bumptech.glide.Glide
 import com.schaefer.mymovies.R
+import com.schaefer.mymovies.core.extensions.addFragment
+import com.schaefer.mymovies.core.extensions.replaceFragment
+import com.schaefer.mymovies.presentation.details.episode.EpisodeDetailsFragment
+import com.schaefer.mymovies.presentation.details.episode.EpisodeDetailsViewModel
+import com.schaefer.mymovies.presentation.details.show.ShowDetailsFragment
+import com.schaefer.mymovies.presentation.details.show.ShowDetailsViewModel
+import com.schaefer.mymovies.presentation.model.Image
 import com.schaefer.mymovies.presentation.model.Show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_details.*
@@ -17,51 +20,86 @@ const val BUNDLE_SHOW = "show"
 
 @AndroidEntryPoint
 class DetailsActivity : AppCompatActivity(R.layout.activity_details) {
-    private val show: Show? by lazy {
-        intent.extras?.getParcelable(BUNDLE_SHOW) as Show?
-    }
+    private val showDetailsViewModel: ShowDetailsViewModel by viewModels()
+    private val episodeViewModel: EpisodeDetailsViewModel by viewModels()
+    lateinit var onBackPressedAction: () -> Unit
 
-    private val navController: NavController by lazy {
-        findNavController(R.id.nav_host_fragment)
+    private val showBundle: Show? by lazy {
+        intent.extras?.getParcelable(BUNDLE_SHOW) as Show?
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupToolbar()
-        setupNavController()
+        setupObservers()
+
+        setupDefaultToolbar()
+
+        showDetailsViewModel.apply {
+            show = showBundle
+            navigateToShowDetails()
+        }
     }
 
-    private fun setupNavController() {
-        navController.navigate(
-            R.id.showDetailsFragment,
-            bundleOf(BUNDLE_SHOW to show)
-        )
-        setupActionBarWithNavController(navController, AppBarConfiguration.Builder().build())
-    }
-
-    private fun setupToolbar() {
+    private fun setupDefaultToolbar() {
         setSupportActionBar(toolbarDetails)
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+        toolbarDetails.setNavigationOnClickListener {
+            onBackPressedAction()
+        }
+    }
+
+    private fun setupObservers() {
+        showDetailsViewModel.action.observe(this, { detailsAction ->
+            handleAction(detailsAction)
+        })
+
+        episodeViewModel.action.observe(this, { detailsAction ->
+            handleAction(detailsAction)
+        })
+    }
+
+    private fun handleAction(detailsAction: DetailsAction?) {
+        when (detailsAction) {
+            is DetailsAction.NavigateToShowDetails -> {
+                showDetailsViewModel.show?.let { show ->
+                    replaceFragment(ShowDetailsFragment(), R.id.idDetailsFragment)
+                    setupUiToolbar(show.name, show.image) { finish() }
+                }
+            }
+            is DetailsAction.NavigateToEpisodeDetails -> {
+                episodeViewModel.episode = detailsAction.episode
+                episodeViewModel.episode?.let { episode ->
+                    addFragment(EpisodeDetailsFragment(), R.id.idDetailsFragment)
+                    setupUiToolbar(
+                        episode.name.orEmpty(),
+                        episode.image
+                    ) {
+                        episodeViewModel.navigateToShowDetails()
+                    }
+                }
+
+            }
+        }
+    }
+
+    private fun setupUiToolbar(titleToolbar: String, image: Image?, action: () -> Unit) {
         ctlToolbar.apply {
-            title = show?.name
+            title = titleToolbar
             Glide.with(context)
-                .load(show?.image?.original)
+                .load(image?.original)
+                .centerCrop()
                 .placeholder(R.drawable.show_placeholder)
                 .into(ivCollapsingToolbar)
             setCollapsedTitleTextAppearance(R.style.coll_toolbar_title)
             setExpandedTitleTextAppearance(R.style.exp_toolbar_title)
             //TODO set color based on image background
         }
+
+        onBackPressedAction = action
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        if (!(navController.navigateUp() || super.onSupportNavigateUp())) {
-            finish()
-        } else {
-            onBackPressed()
-        }
-        return true
+    override fun onBackPressed() {
+        onBackPressedAction()
     }
 }

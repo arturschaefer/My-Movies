@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="200dp"
+    android:layout_width="match_parent"
     android:layout_height="300dp"
     android:layout_margin="4dp"
     app:cardCornerRadius="6dp">
@@ -37,14 +37,14 @@
 
             <TextView
                 android:id="@+id/tvItemShowName"
+                style="@style/TitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="The Mandalorian"
-                style="@style/TitleText" />
+                tools:text="The Mandalorian" />
 
             <View
                 android:id="@+id/vItemNameDivider"
@@ -72,9 +72,9 @@
 
             <TextView
                 android:id="@+id/tvItemRate"
-                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
                 app:drawableStartCompat="@drawable/ic_dashboard_black_24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/ibItemFavorite"
                 app:layout_constraintEnd_toEndOf="parent"

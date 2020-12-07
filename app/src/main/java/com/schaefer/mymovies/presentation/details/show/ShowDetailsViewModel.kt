@@ -5,14 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.schaefer.mymovies.core.viewmodel.ViewModel
 import com.schaefer.mymovies.domain.usecase.GetEpisodeListUseCase
+import com.schaefer.mymovies.presentation.details.DetailsAction
 import com.schaefer.mymovies.presentation.model.Episode
 import com.schaefer.mymovies.presentation.model.ListEpisode
+import com.schaefer.mymovies.presentation.model.Show
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
 class ShowDetailsViewModel @ViewModelInject constructor(val getEpisodeListUseCase: GetEpisodeListUseCase) :
-    ViewModel<ShowDetailsViewState, ShowDetailsAction>(ShowDetailsViewState(true)) {
+    ViewModel<ShowDetailsViewState, DetailsAction>(ShowDetailsViewState(true)) {
+
+    var show: Show? = null
 
     private val mutableHashMap = MutableLiveData<Map<Int?, List<Episode>>>()
     val episodes: LiveData<Map<Int?, List<Episode>>> = mutableHashMap
@@ -42,5 +46,13 @@ class ShowDetailsViewModel @ViewModelInject constructor(val getEpisodeListUseCas
 
     private fun showLoading() {
 //        TODO("Not yet implemented")
+    }
+
+    fun navigateToShowDetails() {
+        sendAction(DetailsAction.NavigateToShowDetails)
+    }
+
+    fun navigateToEpisodeDetails(episode: Episode) {
+        sendAction(DetailsAction.NavigateToEpisodeDetails(episode))
     }
 }

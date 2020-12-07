@@ -64,7 +64,7 @@ and some of the basics libraries of AndroidX: RecyclerView, CardView, SwipeRefre
 <!-- Instalation -->
 ### Installation
 
-1. Get a release APK at [releases]()
+1. Get a release APK at [releases](https://drive.google.com/drive/folders/1SfpnP16wmj83RWk0faGMbZzylUJWMBRh?usp=sharing)
 2. Install in your phone
 3. Be happy!
    

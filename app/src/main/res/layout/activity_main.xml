@@ -19,12 +19,12 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/idMainFragment"
+        android:name="com.schaefer.mymovies.presentation.screens.home.HomeFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.schaefer.mymovies.presentation.home.HomeFragment"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

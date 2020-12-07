@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="TitleText">
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginLeft">8dp</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:layout_marginEnd">8dp</item>
-        <item name="android:layout_marginRight">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -23,6 +12,8 @@
     </style>
 
     <style name="AppTheme.Home" parent="Theme.MaterialComponents.Light.DarkActionBar" />
+
+    <style name="AppTheme.Compat" parent="Theme.AppCompat.Light.DarkActionBar" />
 
     <style name="coll_toolbar_title">
         <item name="android:textColor">@color/white</item>

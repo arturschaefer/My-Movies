@@ -1,21 +1,22 @@
-package com.schaefer.mymovies.presentation.adapters.home
+package com.schaefer.mymovies.presentation.adapters.show
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.schaefer.mymovies.R
 import com.schaefer.mymovies.presentation.model.Show
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_card_image.*
 
-class HomeListItemViewHolder(
+class ShowListItemViewHolder(
     itemView: View
 ) : RecyclerView.ViewHolder(itemView), LayoutContainer {
 
     fun bind(show: Show, itemClickListener: OnItemClickListener) {
         tvItemShowName.text = show.name
-        tvItemRate.text = show.rating?.average.toString()
 
-        Glide.with(itemView).load(show.image?.original).centerCrop().into(ivItemPoster)
+        Glide.with(itemView).load(show.image?.original).centerCrop()
+            .placeholder(R.drawable.show_placeholder).into(ivItemPoster)
 
         itemView.setOnClickListener { itemClickListener.onItemClick(show) }
     }

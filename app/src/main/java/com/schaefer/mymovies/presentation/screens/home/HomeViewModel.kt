@@ -1,10 +1,9 @@
-package com.schaefer.mymovies.presentation.home
+package com.schaefer.mymovies.presentation.screens.home
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.schaefer.mymovies.core.viewmodel.ViewModel
-import com.schaefer.mymovies.domain.usecase.GetSearchShowsUseCase
 import com.schaefer.mymovies.domain.usecase.GetShowsUseCase
 import com.schaefer.mymovies.presentation.model.ListShow
 import com.schaefer.mymovies.presentation.model.Show
@@ -13,8 +12,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
 class HomeViewModel @ViewModelInject constructor(
-    private val getShowsUseCase: GetShowsUseCase,
-    private val getSearchShowsUseCase: GetSearchShowsUseCase
+    private val getShowsUseCase: GetShowsUseCase
 ) :
     ViewModel<HomeViewState, HomeAction>(HomeViewState(true)) {
 
@@ -48,18 +46,11 @@ class HomeViewModel @ViewModelInject constructor(
         mutableListShow.value = listShow
     }
 
-    fun getShowsBySearch(search: String?) {
-        search?.let {
-            getSearchShowsUseCase(search).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { showLoading() }
-                .doFinally { hideLoading() }
-                .subscribe(::getShowsSuccess, ::getShowsError)
-                .handleDisposable()
-        }
-    }
-
     fun navigateToDetails(show: Show) {
         sendAction(HomeAction.NavigateToDetails(show))
+    }
+
+    fun navigateToSearch(){
+        sendAction(HomeAction.NavigateToSearch)
     }
 }

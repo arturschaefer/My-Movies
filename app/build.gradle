@@ -86,6 +86,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
+    implementation "com.airbnb.android:lottie:$lottie_version"
     // JSON Converter
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 

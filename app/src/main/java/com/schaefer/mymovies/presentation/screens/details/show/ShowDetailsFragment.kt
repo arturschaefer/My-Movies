@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.details.show
+package com.schaefer.mymovies.presentation.screens.details.show
 
 import android.os.Bundle
 import android.view.View
@@ -69,5 +69,9 @@ class ShowDetailsFragment : Fragment(R.layout.fragment_show_details), OnItemClic
 
     override fun onItemClick(episode: Episode) {
         viewModel.navigateToEpisodeDetails(episode)
+    }
+
+    companion object{
+        const val BUNDLE_SHOW = "show"
     }
 }

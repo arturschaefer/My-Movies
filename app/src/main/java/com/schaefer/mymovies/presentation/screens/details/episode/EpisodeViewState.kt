@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.details.episode
+package com.schaefer.mymovies.presentation.screens.details.episode
 
 import com.schaefer.mymovies.core.viewmodel.UIState
 

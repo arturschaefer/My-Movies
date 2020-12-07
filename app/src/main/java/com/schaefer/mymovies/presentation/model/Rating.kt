@@ -6,4 +6,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Rating (
 	val average : Double
-): Parcelable
+): Parcelable {
+	fun hasValue(): Boolean = average > 0.0
+}

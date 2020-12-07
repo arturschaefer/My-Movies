@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.details
+package com.schaefer.mymovies.presentation.screens.details
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,12 +7,12 @@ import com.bumptech.glide.Glide
 import com.schaefer.mymovies.R
 import com.schaefer.mymovies.core.extensions.addFragment
 import com.schaefer.mymovies.core.extensions.replaceFragment
-import com.schaefer.mymovies.presentation.details.episode.EpisodeDetailsFragment
-import com.schaefer.mymovies.presentation.details.episode.EpisodeDetailsViewModel
-import com.schaefer.mymovies.presentation.details.show.ShowDetailsFragment
-import com.schaefer.mymovies.presentation.details.show.ShowDetailsViewModel
 import com.schaefer.mymovies.presentation.model.Image
 import com.schaefer.mymovies.presentation.model.Show
+import com.schaefer.mymovies.presentation.screens.details.episode.EpisodeDetailsFragment
+import com.schaefer.mymovies.presentation.screens.details.episode.EpisodeDetailsViewModel
+import com.schaefer.mymovies.presentation.screens.details.show.ShowDetailsFragment
+import com.schaefer.mymovies.presentation.screens.details.show.ShowDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_details.*
 

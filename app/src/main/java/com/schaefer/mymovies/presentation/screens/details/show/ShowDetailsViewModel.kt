@@ -1,14 +1,14 @@
-package com.schaefer.mymovies.presentation.details.show
+package com.schaefer.mymovies.presentation.screens.details.show
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.schaefer.mymovies.core.viewmodel.ViewModel
 import com.schaefer.mymovies.domain.usecase.GetEpisodeListUseCase
-import com.schaefer.mymovies.presentation.details.DetailsAction
 import com.schaefer.mymovies.presentation.model.Episode
 import com.schaefer.mymovies.presentation.model.ListEpisode
 import com.schaefer.mymovies.presentation.model.Show
+import com.schaefer.mymovies.presentation.screens.details.DetailsAction
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber

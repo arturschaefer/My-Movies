@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.details.episode
+package com.schaefer.mymovies.presentation.screens.details.episode
 
 import android.os.Bundle
 import android.view.View
@@ -22,7 +22,10 @@ class EpisodeDetailsFragment : Fragment(R.layout.fragment_episode_details) {
         episodeDetailsViewModel.episode?.let { episode ->
             tvEpisodeNumberDescription.text = episode.number.toString()
             tvEpisodeSeasonDescription.text = episode.season.toString()
-            tvEpisodeSummaryDescription.text = episode.summary?.parseAsHtml()
+            tvEpisodeSummaryDescription.text =
+                if (episode.summary?.isNotBlank() == true) episode.summary.parseAsHtml() else getString(
+                    R.string.episode_details_summary_empty
+                )
         }
     }
 }

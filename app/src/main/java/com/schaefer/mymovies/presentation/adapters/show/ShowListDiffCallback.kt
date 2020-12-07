@@ -1,9 +1,9 @@
-package com.schaefer.mymovies.presentation.adapters.home
+package com.schaefer.mymovies.presentation.adapters.show
 
 import androidx.recyclerview.widget.DiffUtil
 import com.schaefer.mymovies.presentation.model.ListShow
 
-class HomeListDiffCallback(
+class ShowListDiffCallback(
     private val oldList: ListShow,
     private val newList: ListShow
 ) : DiffUtil.Callback() {

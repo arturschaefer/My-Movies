@@ -37,62 +37,53 @@
 
             <TextView
                 android:id="@+id/tvItemShowName"
-                style="@style/TitleText"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="The Mandalorian" />
 
-            <View
-                android:id="@+id/vItemNameDivider"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
-                android:backgroundTint="@android:color/white"
-                app:layout_constraintTop_toBottomOf="@+id/tvItemShowName"
-                tools:layout_editor_absoluteX="0dp"
-                tools:targetApi="lollipop" />
+<!--            <View-->
+<!--                android:id="@+id/vItemNameDivider"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="?android:attr/listDivider"-->
+<!--                android:backgroundTint="@android:color/white"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tvItemShowName"-->
+<!--                tools:layout_editor_absoluteX="0dp"-->
+<!--                tools:targetApi="lollipop" />-->
 
-            <ImageButton
-                android:id="@+id/ibItemFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:background="?android:selectableItemBackground"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvItemRate"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vItemNameDivider"
-                app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvItemFavorite"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:drawablePadding="4dp"-->
+<!--                app:drawableStartCompat="@drawable/ic_favorite_24"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tvItemShowName" />-->
 
-            <TextView
-                android:id="@+id/tvItemRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                app:drawableStartCompat="@drawable/ic_dashboard_black_24dp"
-                app:layout_constraintBottom_toBottomOf="@+id/ibItemFavorite"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/ibItemFavorite"
-                app:layout_constraintTop_toTopOf="@+id/ibItemFavorite" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/groupMovie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:constraint_referenced_ids="tvItemRate,ibItemFavorite,vItemNameDivider"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+<!--            <androidx.constraintlayout.widget.Group-->
+<!--                android:id="@+id/groupMovie"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:constraint_referenced_ids="tvItemFavorite,vItemNameDivider"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.0"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_bias="1.0" />-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

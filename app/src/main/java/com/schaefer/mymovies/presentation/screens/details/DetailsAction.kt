@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.details
+package com.schaefer.mymovies.presentation.screens.details
 
 import com.schaefer.mymovies.core.viewmodel.UIAction
 import com.schaefer.mymovies.presentation.model.Episode

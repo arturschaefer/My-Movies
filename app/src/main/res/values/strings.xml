@@ -17,4 +17,6 @@
     <string name="details_episode_title_summary">Summary</string>
     <string name="details_episode_title_season">Season:</string>
     <string name="details_episode_title_number">Number:</string>
+    <string name="search_hint">Search here</string>
+    <string name="episode_details_summary_empty">There is no Summary to read.</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.adapters.home
+package com.schaefer.mymovies.presentation.adapters.show
 
 import com.schaefer.mymovies.presentation.model.Show
 

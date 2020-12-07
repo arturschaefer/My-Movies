@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation
+package com.schaefer.mymovies.presentation.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import com.schaefer.mymovies.R

@@ -21,7 +21,7 @@ class HomeViewModel @ViewModelInject constructor(
 
     fun getShows(page: Int = 1) {
         //TODO get the correct page
-        getShowsUseCase(1)
+        getShowsUseCase(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { showLoading() }

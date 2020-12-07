@@ -26,7 +26,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Next steps</a></li>
+    <li><a href="#next-steps">Next steps</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -61,18 +61,21 @@ List of libraries used at the project:
 
 and some of the basics libraries of AndroidX: RecyclerView, CardView, SwipeRefreshLayout, ConcatAdapater, Material...
 
+<!-- Instalation -->
 ### Installation
 
 1. Get a release APK at [releases]()
 2. Install in your phone
 3. Be happy!
    
+<!-- NEXT STEPS -->
 ## Next steps
 
 There are some impromevents in my mind:
 * Login and SignUp
 * Save favorite shows
 * Show a list of actors
+
 <!-- LICENSE -->
 ## License
 

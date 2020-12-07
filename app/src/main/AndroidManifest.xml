@@ -13,7 +13,6 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".presentation.screens.MainActivity"
-            android:label="@string/title_home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Home"
             android:windowSoftInputMode="adjustResize">

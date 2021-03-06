@@ -63,6 +63,10 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$versions.legacy_support"
     implementation "com.google.android.material:material:$versions.material"
 
+    //Paging3
+    implementation "androidx.paging:paging-runtime:$versions.paging3"
+    implementation "androidx.paging:paging-rxjava3:$versions.paging3"
+
     implementation "androidx.vectordrawable:vectordrawable:$versions.vector_drawable"
 
     //Navigation

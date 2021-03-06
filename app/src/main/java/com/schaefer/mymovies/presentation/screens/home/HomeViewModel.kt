@@ -3,9 +3,9 @@ package com.schaefer.mymovies.presentation.screens.home
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.PagingData
 import com.schaefer.mymovies.core.viewmodel.ViewModel
 import com.schaefer.mymovies.domain.usecase.GetShowsUseCase
-import com.schaefer.mymovies.presentation.model.ListShow
 import com.schaefer.mymovies.presentation.model.Show
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -16,16 +16,13 @@ class HomeViewModel @ViewModelInject constructor(
 ) :
     ViewModel<HomeViewState, HomeAction>(HomeViewState(true)) {
 
-    private val mutableListShow = MutableLiveData<ListShow>()
-    val listShow: LiveData<ListShow> = mutableListShow
+    private val mutableListShow = MutableLiveData<PagingData<Show>>()
+    val listShow: LiveData<PagingData<Show>> = mutableListShow
 
     fun getShows(page: Int = 1) {
-        //TODO get the correct page
         getShowsUseCase(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { showLoading() }
-            .doFinally { hideLoading() }
             .subscribe(::getShowsSuccess, ::getShowsError)
             .handleDisposable()
     }
@@ -42,7 +39,7 @@ class HomeViewModel @ViewModelInject constructor(
         setState(HomeViewState().isLoadingEnabled(true))
     }
 
-    private fun getShowsSuccess(listShow: ListShow) {
+    private fun getShowsSuccess(listShow: PagingData<Show>) {
         mutableListShow.value = listShow
     }
 

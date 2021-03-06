@@ -22,6 +22,7 @@ ext.versions = [
         navigation             : '2.2.2',
         nav_args               : '2.3.1',
         lifecycle              : '2.2.0',
+        paging3                : '3.0.0-beta01',
 
         //RxJava
         rxjava                 : '3.0.0',

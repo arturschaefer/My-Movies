@@ -9,11 +9,14 @@ import com.schaefer.mymovies.domain.model.ShowDomain
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
+//Reference https://medium.com/@fandygotama/paging-3-using-rxjava-3ddc218e4dba
 class GetShowsPagingDataSource(
     private val service: TvMazeAPI,
     private val mapper: ListDomainShowMapper
 ) :
     RxPagingSource<Int, ShowDomain>() {
+
+    //TODO create e mediator PagingSource with Room
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, ShowDomain>> {
         val position = params.key ?: 1

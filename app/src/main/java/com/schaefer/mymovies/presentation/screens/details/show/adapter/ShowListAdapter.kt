@@ -1,10 +1,11 @@
-package com.schaefer.mymovies.presentation.adapters.show
+package com.schaefer.mymovies.presentation.screens.details.show.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.schaefer.mymovies.R
+import com.schaefer.mymovies.presentation.adapters.show.OnItemClickListener
 import com.schaefer.mymovies.presentation.model.ListShow
 
 class ShowListAdapter(val itemClickListener: OnItemClickListener) :

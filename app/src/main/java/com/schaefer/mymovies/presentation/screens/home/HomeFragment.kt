@@ -8,30 +8,31 @@ import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingData
 import com.schaefer.mymovies.R
-import com.schaefer.mymovies.core.PaginationScrollListener
 import com.schaefer.mymovies.presentation.adapters.show.OnItemClickListener
-import com.schaefer.mymovies.presentation.adapters.show.ShowListAdapter
+import com.schaefer.mymovies.presentation.adapters.show.ShowsRxAdapter
 import com.schaefer.mymovies.presentation.model.Show
 import com.schaefer.mymovies.presentation.screens.details.DetailsActivity
 import com.schaefer.mymovies.presentation.screens.details.show.ShowDetailsFragment.Companion.BUNDLE_SHOW
 import com.schaefer.mymovies.presentation.screens.search.SearchActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home), OnItemClickListener {
+
+    //TODO fix swipe refresh layout
+    //TODO put load state at adapter
+    
     private val homeViewModel: HomeViewModel by viewModels()
-    private val homeShowAdapter = ShowListAdapter(this)
-    var isLastPage: Boolean = false
-    var isLoading: Boolean = false
-    var page = 1
+    private val homeShowAdapter = ShowsRxAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        homeViewModel.getShows()
         setupView()
         setupObservers()
     }
@@ -54,20 +55,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), OnItemClickListener {
     private fun setupView() {
         rvHomeShows.apply {
             adapter = homeShowAdapter
-            addOnScrollListener(object : PaginationScrollListener(GridLayoutManager(context, 2)) {
-                override fun isLastPage(): Boolean {
-                    return isLastPage
-                }
-
-                override fun isLoading(): Boolean {
-                    return isLoading
-                }
-
-                override fun loadMoreItems() {
-                    isLoading = true
-                    homeViewModel.getShows(++page)
-                }
-            })
         }
 
         srlHomeFragment.setOnRefreshListener { homeViewModel.getShows() }
@@ -79,8 +66,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), OnItemClickListener {
         })
 
         homeViewModel.listShow.observe(viewLifecycleOwner, {
-            homeShowAdapter.shows = it
-            isLoading = false
+            submitDataToAdapter(it)
         })
 
         homeViewModel.action.observe(viewLifecycleOwner, {
@@ -98,6 +84,12 @@ class HomeFragment : Fragment(R.layout.fragment_home), OnItemClickListener {
                 }
             }
         })
+    }
+
+    private fun submitDataToAdapter(it: PagingData<Show>) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            homeShowAdapter.submitData(it)
+        }
     }
 
     override fun onItemClick(show: Show) {

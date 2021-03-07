@@ -1,9 +1,10 @@
-package com.schaefer.mymovies.presentation.adapters.show
+package com.schaefer.mymovies.presentation.screens.details.show.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.schaefer.mymovies.R
+import com.schaefer.mymovies.presentation.adapters.show.OnItemClickListener
 import com.schaefer.mymovies.presentation.model.Show
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_card_image.*

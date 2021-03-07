@@ -1,4 +1,4 @@
-package com.schaefer.mymovies.presentation.adapters.show
+package com.schaefer.mymovies.presentation.screens.details.show.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.schaefer.mymovies.presentation.model.ListShow

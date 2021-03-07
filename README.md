@@ -58,6 +58,8 @@ List of libraries used at the project:
 * [RxJava3](https://github.com/ReactiveX/RxAndroid)
 * [OkHttp](https://square.github.io/okhttp/)
 * [ReadMoreTextView](https://github.com/bravoborja/ReadMoreTextView)
+* [Paging3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
+* [Mockito](https://site.mockito.org/) 
 
 and some of the basics libraries of AndroidX: RecyclerView, CardView, SwipeRefreshLayout, ConcatAdapater, Material...
 
@@ -75,6 +77,9 @@ There are some impromevents in my mind:
 * Login and SignUp
 * Save favorite shows
 * Show a list of actors
+* Unit tests
+* Instrumented tests
+* Paging with load states
 
 <!-- LICENSE -->
 ## License

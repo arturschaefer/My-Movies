@@ -32,10 +32,9 @@ class RepositoryModule {
     @Provides
     fun providesShowsRepository(
         service: TvMazeAPI,
-        mapperDomain: ListDomainShowMapper,
         mapperSearch: SearchResponseItemMapper,
         pagingSource: GetShowsPagingDataSource
-    ): ShowsRepository = ShowsRepositoryImpl(service, mapperDomain, mapperSearch, pagingSource)
+    ): ShowsRepository = ShowsRepositoryImpl(service, mapperSearch, pagingSource)
 
     @Provides
     fun providesEpisodeRepository(

@@ -24,13 +24,15 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home), OnItemClickListener {
 
+    //TODO fix swipe refresh layout
+    //TODO put load state at adapter
+    
     private val homeViewModel: HomeViewModel by viewModels()
     private val homeShowAdapter = ShowsRxAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        homeViewModel.getShows()
         setupView()
         setupObservers()
     }

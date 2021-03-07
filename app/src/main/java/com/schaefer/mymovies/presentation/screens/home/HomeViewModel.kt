@@ -14,10 +14,14 @@ import timber.log.Timber
 class HomeViewModel @ViewModelInject constructor(
     private val getShowsUseCase: GetShowsUseCase
 ) :
-    ViewModel<HomeViewState, HomeAction>(HomeViewState(true)) {
+    ViewModel<HomeViewState, HomeAction>(HomeViewState(false)) {
 
     private val mutableListShow = MutableLiveData<PagingData<Show>>()
     val listShow: LiveData<PagingData<Show>> = mutableListShow
+
+    init {
+        getShows()
+    }
 
     fun getShows(page: Int = 1) {
         getShowsUseCase(page)

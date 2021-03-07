@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.schaefer.mymovies.R
 import com.schaefer.mymovies.presentation.adapters.show.OnItemClickListener
-import com.schaefer.mymovies.presentation.adapters.show.ShowListAdapter
 import com.schaefer.mymovies.presentation.model.Show
 import com.schaefer.mymovies.presentation.screens.details.DetailsActivity
 import com.schaefer.mymovies.presentation.screens.details.show.ShowDetailsFragment.Companion.BUNDLE_SHOW
+import com.schaefer.mymovies.presentation.screens.details.show.adapter.ShowListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
 

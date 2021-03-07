@@ -43,6 +43,7 @@ ext.versions = [
         junit                  : '4.+',
         junit_ext              : '1.1.2',
         espresso               : '3.3.0',
+        mockito_kotlin         : '2.2.0',
 
         //Json serialization
         gson                   : '2.5.0',
